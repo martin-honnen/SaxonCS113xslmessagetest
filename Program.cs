@@ -15,4 +15,6 @@ var xsltExecutable = xsltCompiler.Compile(new StringReader(@"<xsl:stylesheet xml
 
 var transformer = xsltExecutable.Load30();
 
+transformer.MessageListener = message => { Console.Error.WriteLine(message); };
+
 transformer.CallTemplate(null, processor.NewSerializer(Console.Out));
